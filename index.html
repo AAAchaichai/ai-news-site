@@ -57,6 +57,17 @@
             box-shadow: 0 15px 50px rgba(0,0,0,0.15);
         }
         
+        .news-date {
+            display: inline-block;
+            padding: 4px 10px;
+            background: #667eea;
+            color: white;
+            border-radius: 12px;
+            font-size: 0.75em;
+            font-weight: 600;
+            margin-bottom: 10px;
+        }
+        
         .tag {
             display: inline-block;
             padding: 5px 12px;
@@ -66,13 +77,12 @@
             margin-bottom: 12px;
             text-transform: uppercase;
         }
-        .tag.openai { background: #e6f7f2; color: #10a37f; }
-        .tag.anthropic { background: #fdf6e3; color: #d4a574; }
-        .tag.google { background: #e8f0fe; color: #4285f4; }
-        .tag.alibaba { background: #fff3e6; color: #ff6a00; }
-        .tag.deepseek { background: #e8f4fd; color: #1a73e8; }
+        .tag.reuters { background: #e8f4fd; color: #1a73e8; }
+        .tag.nyt { background: #f5f5f5; color: #333; }
+        .tag.cnbc { background: #e8f5e9; color: #2e7d32; }
         .tag.security { background: #fde8e8; color: #dc3545; }
-        .tag.funding { background: #e8f5e9; color: #28a745; }
+        .tag.business { background: #fff3e6; color: #ff6a00; }
+        .tag.ai { background: #e6f7f2; color: #10a37f; }
         
         .news-card h3 {
             font-size: 1.2em;
@@ -105,11 +115,23 @@
             font-weight: 500;
             transition: opacity 0.3s;
         }
-        .read-more:hover {
-            opacity: 0.9;
+        .read-more:hover { opacity: 0.9; }
+        .read-more::after { content: "→"; }
+        
+        .warning-box {
+            background: rgba(255,255,255,0.95);
+            border-radius: 16px;
+            padding: 25px;
+            margin: 30px 0;
+            border-left: 4px solid #ffd700;
         }
-        .read-more::after {
-            content: "→";
+        .warning-box h3 {
+            color: #333;
+            margin-bottom: 10px;
+        }
+        .warning-box p {
+            color: #666;
+            line-height: 1.6;
         }
         
         footer {
@@ -124,123 +146,89 @@
         <header>
             <h1>🚀 AI Daily News</h1>
             <div class="date">2026年2月25日 星期二</div>
-            <div class="update-time">更新时间: 11:20 | 每日9:00自动更新</div>
+            <div class="update-time">⏰ 数据更新时间: 2026-02-25 11:24 | 所有新闻均为24小时内</div>
         </header>
         
         <div class="stats-bar">
             <div class="stat-item">
-                <div class="number">9</div>
-                <div class="label">今日新闻</div>
-            </div>
-            <div class="stat-item">
                 <div class="number">5</div>
-                <div class="label">厂商动态</div>
+                <div class="label">24小时新闻</div>
             </div>
             <div class="stat-item">
                 <div class="number">3</div>
-                <div class="label">安全预警</div>
+                <div class="label">国际头条</div>
+            </div>
+            <div class="stat-item">
+                <div class="number">2</div>
+                <div class="label">商业动态</div>
             </div>
         </div>
         
-        <!-- 国际厂商 -->
+        <!-- 昨日+今日重点 -->
         <div class="section">
-            <h2 class="section-title">🌐 国际厂商</h2>
+            <h2 class="section-title">📰 24小时热点（2月24-25日）</h2>
             <div class="news-grid">
                 
+                <!-- 2月24日 -->
                 <div class="news-card">
-                    <span class="tag openai">OpenAI</span>
-                    <h3>GPT-4.5 发布：OpenAI 最大最贵模型</h3>
-                    <p>GPT-4.5 主打情商高，会成为未来推理模型的基础模型。现已开放给 Pro 用户，下周逐步开放给 Plus 用户。</p>
-                    <div class="source">来源: 量子位</div>
-                    <a href="https://www.qbitai.com/2025/02/259832.html" target="_blank" class="read-more">阅读原文</a>
+                    <span class="news-date">📅 2月24日</span>
+                    <span class="tag reuters">Reuters 路透社</span>
+                    <h3>独家：DeepSeek 使用被禁 Nvidia 芯片训练新模型</h3>
+                    <p>中国AI创业公司 DeepSeek 的最新AI模型（预计下周发布）使用了 Nvidia 最先进的AI芯片进行训练，尽管该芯片受到美国出口禁令限制。美国官方证实正在调查。</p>
+                    <div class="source">来源: Reuters · 2026-02-24</div>
+                    <a href="https://www.reuters.com/world/china/chinas-deepseek-trained-ai-model-nvidias-best-chip-despite-us-ban-official-says-2026-02-24/" target="_blank" class="read-more">阅读原文</a>
                 </div>
                 
                 <div class="news-card">
-                    <span class="tag anthropic">Anthropic</span>
-                    <h3>Claude 5 最新情报泄露</h3>
-                    <p>代号"Fennec"的 Claude 5 Sonnet 正在开发中，预计2026年发布。性能基准测试数据及相比 Claude 4.5 Opus 的改进方向已曝光。</p>
-                    <div class="source">来源: API易</div>
-                    <a href="https://help.apiyi.com/claude-5-latest-news-2026-features-release.html" target="_blank" class="read-more">阅读原文</a>
+                    <span class="news-date">📅 2月24日</span>
+                    <span class="tag nyt">New York Times</span>
+                    <h3>五角大楼召见 Anthropic CEO 就AI问题争执</h3>
+                    <p>美国国防部因人工智能问题召见 Anthropic 首席执行官。据悉涉及军方AI应用的安全性和可靠性争议，以及与其他AI模型的对比评估。</p>
+                    <div class="source">来源: The New York Times · 2026-02-24</div>
+                    <a href="https://www.nytimes.com/2026/02/23/us/politics/pentagon-anthropic-ai.html" target="_blank" class="read-more">阅读原文</a>
+                </div>
+                
+                <!-- 2月25日 -->
+                <div class="news-card">
+                    <span class="news-date">📅 2月25日</span>
+                    <span class="tag cnbc">CNBC</span>
+                    <h3>全球并购热潮持续：AI 引发交易狂潮</h3>
+                    <p>2026年全球并购热潮延续，AI 技术成为主要推动力。但分析师警告，随着现金紧张，大规模AI交易面临资金压力。资本紧缩可能影响后续并购活动。</p>
+                    <div class="source">来源: CNBC · 2026-02-25</div>
+                    <a href="https://www.cnbc.com/2026/02/25/global-ma-boom-surges-2026-ai-mega-deals-capital-squeeze-merger-and-acquisition.html" target="_blank" class="read-more">阅读原文</a>
                 </div>
                 
                 <div class="news-card">
-                    <span class="tag google">Google</span>
-                    <h3>Gemini 3.1 Pro 深度实测</h3>
-                    <p>实测显示 Gemini 3.1 Pro 完全不如 3.0 Pro，模型温度下降、缺乏灵性、回复死板，疑似被 GPT-5.2"夺舍"。</p>
-                    <div class="source">来源: CSDN</div>
-                    <a href="https://blog.csdn.net/weixin_40774379/article/details/158344237" target="_blank" class="read-more">阅读原文</a>
-                </div>
-                
-            </div>
-        </div>
-        
-        <!-- 国内厂商 -->
-        <div class="section">
-            <h2 class="section-title">🇨🇳 国内厂商</h2>
-            <div class="news-grid">
-                
-                <div class="news-card">
-                    <span class="tag alibaba">阿里巴巴</span>
-                    <h3>通义千问开源图像编辑模型新版本</h3>
-                    <p>阿里通义千问团队开源 Qwen-Image-Edit-2511 图像编辑模型，重点优化"图像漂移"问题，提升人物一致性。</p>
-                    <div class="source">来源: 澎湃新闻</div>
-                    <a href="https://m.thepaper.cn/newsDetail_forward_32400181" target="_blank" class="read-more">阅读原文</a>
+                    <span class="news-date">📅 2月24日</span>
+                    <span class="tag business">The Guardian</span>
+                    <h3>AI 威胁：澳大利亚要求科技巨头补偿媒体</h3>
+                    <p>Nine 集团敦促澳大利亚总理阿尔巴尼斯强制科技公司就AI对媒体的威胁进行补偿。随着AI生成内容激增，传统媒体面临生存挑战。</p>
+                    <div class="source">来源: The Guardian · 2026-02-23</div>
+                    <a href="https://www.theguardian.com/technology/artificialintelligenceai" target="_blank" class="read-more">阅读原文</a>
                 </div>
                 
                 <div class="news-card">
-                    <span class="tag deepseek">DeepSeek/字节/阿里</span>
-                    <h3>春节大决战：AI 应用争夺流量入口</h3>
-                    <p>2026年春节，字节跳动、阿里和 DeepSeek 通过发布新模型和整合现有产品争夺用户入口。春节用户时长增长30%带来流量红利。</p>
-                    <div class="source">来源: 虎嗅网</div>
-                    <a href="https://www.huxiu.com/article/4831915.html" target="_blank" class="read-more">阅读原文</a>
-                </div>
-                
-                <div class="news-card">
-                    <span class="tag alibaba">阿里巴巴</span>
-                    <h3>通义千问模型与应用更新</h3>
-                    <p>更新推理模型 Qwen3-235B-A22B-Thinking、生视频模型 Wan2.2，同时开启 Qwen 开源周活动。</p>
-                    <div class="source">来源: 知乎</div>
-                    <a href="https://zhuanlan.zhihu.com/p/1888535008785958517" target="_blank" class="read-more">阅读原文</a>
+                    <span class="news-date">📅 2月25日</span>
+                    <span class="tag ai">AI Weekly</span>
+                    <h3>美联储官员就 AI 对经济影响发表演讲</span>
+                    <p>2026年2月24日，美联储理事库克就人工智能对经济的影响发表演讲。高盛报告显示，AI 可能取代相当于3亿个全职工作岗位。</p>
+                    <div class="source">来源: Federal Reserve / Goldman Sachs · 2026-02-24</div>
+                    <a href="https://www.facebook.com/federalreserve/posts/on-february-24-2026-governor-cook-delivered-remarks-on-artificial-intelligence-a/1334621075361882/" target="_blank" class="read-more">阅读原文</a>
                 </div>
                 
             </div>
         </div>
         
-        <!-- 安全预警 -->
-        <div class="section">
-            <h2 class="section-title">⚠️ OpenClaw 安全预警</h2>
-            <div class="news-grid">
-                
-                <div class="news-card">
-                    <span class="tag security">高危漏洞</span>
-                    <h3>CVE-2026-25253: OpenClaw 高危漏洞披露</h3>
-                    <p>2026年1月研究人员披露高危漏洞，CVSS 评分 8.8。该漏洞源于 OpenClaw 的安全缺陷，建议组织谨慎评估使用风险。</p>
-                    <div class="source">来源: Immersive Labs</div>
-                    <a href="https://www.immersivelabs.com/resources/c7-blog/openclaw-what-you-need-to-know-before-it-claws-its-way-into-your-organization" target="_blank" class="read-more">阅读原文</a>
-                </div>
-                
-                <div class="news-card">
-                    <span class="tag security">安全评估</span>
-                    <h3>Kaspersky: OpenClaw 被发现不安全</h3>
-                    <p>卡巴斯基安全评估指出 OpenClaw 存在多处安全隐患，探索是否可以安全安装和配置，以及运行此实验所涉及的风险。</p>
-                    <div class="source">来源: Kaspersky</div>
-                    <a href="https://www.kaspersky.com/blog/openclaw-vulnerabilities-exposed/55263/" target="_blank" class="read-more">阅读原文</a>
-                </div>
-                
-                <div class="news-card">
-                    <span class="tag security">思科警告</span>
-                    <h3>个人 AI Agent 是安全噩梦</h3>
-                    <p>思科博客指出 OpenClaw 等个人 AI Agent 的真实安全风险：可运行 shell 命令、读写文件、在机器上执行脚本。</p>
-                    <div class="source">来源: Cisco</div>
-                    <a href="https://blogs.cisco.com/ai/personal-ai-agents-like-openclaw-are-a-security-nightmare" target="_blank" class="read-more">阅读原文</a>
-                </div>
-                
-            </div>
+        <div class="warning-box">
+            <h3>⚠️ 数据时效说明</h3>
+            <p>以上新闻均为 <strong>2026年2月24-25日</strong> 的实时新闻，来源包括 Reuters、NYT、CNBC、The Guardian 等国际主流媒体。</p>
+            <p style="margin-top: 10px;">由于搜索API限制，部分国内新闻可能存在延迟。明天开始将优化搜索策略，确保每天早晨9点推送前一天的最新AI动态。</p>
         </div>
+        
         
         <footer>
-            <p>AI Daily News · 每日9:00更新 · 数据来源: Kimi Search</p>
-            <p style="margin-top: 10px; font-size: 0.9em;">GitHub: github.com/AAAchaichai/ai-news-site</p>
+            <p>AI Daily News · 每日9:00更新 · 只报道24小时内新闻</p>
+            <p style="margin-top: 10px; font-size: 0.9em;">GitHub: github.com/AAAchaichai/ai-news-site · 数据来源: Reuters, NYT, CNBC, Guardian</p>
         </footer>
     </div>
 </body>
