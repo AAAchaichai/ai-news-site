@@ -5,49 +5,22 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>AI Daily News - 2026年2月25日</title>
     <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-        
+        * { margin: 0; padding: 0; box-sizing: border-box; }
         body {
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'PingFang SC', 'Hiragino Sans GB', sans-serif;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'PingFang SC', sans-serif;
             background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
             min-height: 100vh;
             padding: 20px;
         }
-        
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-        }
-        
-        header {
-            text-align: center;
-            padding: 40px 0;
-            color: white;
-        }
-        
-        header h1 {
-            font-size: 3em;
-            margin-bottom: 10px;
-            text-shadow: 2px 2px 4px rgba(0,0,0,0.2);
-        }
-        
-        header .date {
-            font-size: 1.2em;
-            opacity: 0.9;
-        }
+        .container { max-width: 1200px; margin: 0 auto; }
+        header { text-align: center; padding: 40px 0; color: white; }
+        header h1 { font-size: 3em; margin-bottom: 10px; }
+        header .date { font-size: 1.2em; opacity: 0.9; }
+        .update-time { color: rgba(255,255,255,0.7); font-size: 0.9em; margin-top: 10px; }
         
         .stats-bar {
-            display: flex;
-            justify-content: center;
-            gap: 30px;
-            margin: 30px 0;
-            flex-wrap: wrap;
+            display: flex; justify-content: center; gap: 30px; margin: 30px 0; flex-wrap: wrap;
         }
-        
         .stat-item {
             background: rgba(255,255,255,0.2);
             backdrop-filter: blur(10px);
@@ -56,27 +29,12 @@
             color: white;
             text-align: center;
         }
+        .stat-item .number { font-size: 2em; font-weight: bold; }
         
-        .stat-item .number {
-            font-size: 2em;
-            font-weight: bold;
-        }
-        
-        .stat-item .label {
-            font-size: 0.9em;
-            opacity: 0.8;
-        }
-        
-        .section {
-            margin: 30px 0;
-        }
-        
+        .section { margin: 30px 0; }
         .section-title {
-            color: white;
-            font-size: 1.8em;
-            margin-bottom: 20px;
-            padding-left: 15px;
-            border-left: 4px solid #ffd700;
+            color: white; font-size: 1.8em; margin-bottom: 20px;
+            padding-left: 15px; border-left: 4px solid #ffd700;
         }
         
         .news-grid {
@@ -91,34 +49,15 @@
             padding: 25px;
             box-shadow: 0 10px 40px rgba(0,0,0,0.1);
             transition: transform 0.3s, box-shadow 0.3s;
-            position: relative;
-            overflow: hidden;
+            display: flex;
+            flex-direction: column;
         }
-        
         .news-card:hover {
             transform: translateY(-5px);
             box-shadow: 0 15px 50px rgba(0,0,0,0.15);
         }
         
-        .news-card::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            height: 4px;
-        }
-        
-        .news-card.anthropic::before { background: #d4a574; }
-        .news-card.openai::before { background: #10a37f; }
-        .news-card.google::before { background: #4285f4; }
-        .news-card.meta::before { background: #0668e1; }
-        .news-card.alibaba::before { background: #ff6a00; }
-        .news-card.deepseek::before { background: #1a73e8; }
-        .news-card.security::before { background: #dc3545; }
-        .news-card.funding::before { background: #28a745; }
-        
-        .news-card .tag {
+        .tag {
             display: inline-block;
             padding: 5px 12px;
             border-radius: 20px;
@@ -127,116 +66,56 @@
             margin-bottom: 12px;
             text-transform: uppercase;
         }
-        
-        .tag.anthropic { background: #fdf6e3; color: #d4a574; }
         .tag.openai { background: #e6f7f2; color: #10a37f; }
+        .tag.anthropic { background: #fdf6e3; color: #d4a574; }
         .tag.google { background: #e8f0fe; color: #4285f4; }
-        .tag.meta { background: #e7f1ff; color: #0668e1; }
         .tag.alibaba { background: #fff3e6; color: #ff6a00; }
         .tag.deepseek { background: #e8f4fd; color: #1a73e8; }
         .tag.security { background: #fde8e8; color: #dc3545; }
         .tag.funding { background: #e8f5e9; color: #28a745; }
         
         .news-card h3 {
-            font-size: 1.3em;
+            font-size: 1.2em;
             margin-bottom: 12px;
             color: #333;
             line-height: 1.4;
         }
-        
         .news-card p {
             color: #666;
             line-height: 1.6;
             margin-bottom: 15px;
+            flex-grow: 1;
         }
-        
-        .news-card .meta {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
+        .news-card .source {
             font-size: 0.85em;
             color: #999;
+            margin-bottom: 12px;
         }
         
-        .highlight-box {
-            background: linear-gradient(135deg, #ff6b6b, #feca57);
-            border-radius: 20px;
-            padding: 30px;
+        .read-more {
+            display: inline-flex;
+            align-items: center;
+            gap: 5px;
+            padding: 10px 20px;
+            background: linear-gradient(135deg, #667eea, #764ba2);
             color: white;
-            margin: 30px 0;
+            text-decoration: none;
+            border-radius: 25px;
+            font-size: 0.9em;
+            font-weight: 500;
+            transition: opacity 0.3s;
         }
-        
-        .highlight-box h2 {
-            font-size: 1.8em;
-            margin-bottom: 15px;
+        .read-more:hover {
+            opacity: 0.9;
         }
-        
-        .highlight-list {
-            list-style: none;
-        }
-        
-        .highlight-list li {
-            padding: 10px 0;
-            padding-left: 25px;
-            position: relative;
-        }
-        
-        .highlight-list li::before {
-            content: '▸';
-            position: absolute;
-            left: 0;
-            font-weight: bold;
-        }
-        
-        .timeline {
-            background: white;
-            border-radius: 20px;
-            padding: 30px;
-            margin: 30px 0;
-        }
-        
-        .timeline h2 {
-            color: #333;
-            margin-bottom: 20px;
-        }
-        
-        .timeline-item {
-            display: flex;
-            margin-bottom: 20px;
-            padding-bottom: 20px;
-            border-bottom: 1px solid #eee;
-        }
-        
-        .timeline-item:last-child {
-            border-bottom: none;
-            margin-bottom: 0;
-        }
-        
-        .timeline-date {
-            min-width: 100px;
-            font-weight: bold;
-            color: #667eea;
-        }
-        
-        .timeline-content {
-            flex: 1;
-            color: #555;
+        .read-more::after {
+            content: "→";
         }
         
         footer {
             text-align: center;
             padding: 40px 0;
             color: rgba(255,255,255,0.7);
-        }
-        
-        @media (max-width: 768px) {
-            header h1 {
-                font-size: 2em;
-            }
-            
-            .news-grid {
-                grid-template-columns: 1fr;
-            }
         }
     </style>
 </head>
@@ -245,168 +124,123 @@
         <header>
             <h1>🚀 AI Daily News</h1>
             <div class="date">2026年2月25日 星期二</div>
+            <div class="update-time">更新时间: 11:20 | 每日9:00自动更新</div>
         </header>
         
         <div class="stats-bar">
             <div class="stat-item">
-                <div class="number">8</div>
+                <div class="number">9</div>
+                <div class="label">今日新闻</div>
+            </div>
+            <div class="stat-item">
+                <div class="number">5</div>
                 <div class="label">厂商动态</div>
             </div>
             <div class="stat-item">
                 <div class="number">3</div>
-                <div class="label">新模型发布</div>
-            </div>
-            <div class="stat-item">
-                <div class="number">2</div>
-                <div class="label">独角兽融资</div>
-            </div>
-            <div class="stat-item">
-                <div class="number">1</div>
                 <div class="label">安全预警</div>
             </div>
         </div>
         
-        <div class="highlight-box">
-            <h2>🔥 今日头条</h2>
-            <ul class="highlight-list">
-                <li>Anthropic 发布全球首款<strong>混合推理模型</strong> Claude 3.7 Sonnet</li>
-                <li>阿里 Qwen 3.5 开源登顶，性能超万亿参数模型，价格仅 Gemini 3 的 1/18</li>
-                <li>OpenClaw 安全危机：Meta 研究员邮件被删，黑客组织大规模利用</li>
-                <li>具身智能爆发：智平方、千寻智能百亿融资，成马年首个赛道热点</li>
-            </ul>
-        </div>
-        
+        <!-- 国际厂商 -->
         <div class="section">
             <h2 class="section-title">🌐 国际厂商</h2>
             <div class="news-grid">
-                <div class="news-card anthropic">
-                    <span class="tag anthropic">Anthropic</span>
-                    <h3>Claude 3.7 Sonnet 发布</h3>
-                    <p>全球首款混合推理模型，融合推理与实时输出能力，类似人类大脑运作。同步发布 Claude Code 开发者工具，编程能力暴涨。</p>
-                    <div class="meta">
-                        <span>2025-02-25</span>
-                        <span>⭐ 重磅</span>
-                    </div>
-                </div>
                 
-                <div class="news-card openai">
+                <div class="news-card">
                     <span class="tag openai">OpenAI</span>
-                    <h3>GPT-4.5 研究预览版</h3>
-                    <p>GPT-4.5 将于2月27日发布研究预览版。GPT-5 将采用统一系统架构，包含标准模型、Thinking深度推理模型和实时路由器。</p>
-                    <div class="meta">
-                        <span>2025-02-27</span>
-                        <span>🔄 预告</span>
-                    </div>
+                    <h3>GPT-4.5 发布：OpenAI 最大最贵模型</h3>
+                    <p>GPT-4.5 主打情商高，会成为未来推理模型的基础模型。现已开放给 Pro 用户，下周逐步开放给 Plus 用户。</p>
+                    <div class="source">来源: 量子位</div>
+                    <a href="https://www.qbitai.com/2025/02/259832.html" target="_blank" class="read-more">阅读原文</a>
                 </div>
                 
-                <div class="news-card google">
+                <div class="news-card">
+                    <span class="tag anthropic">Anthropic</span>
+                    <h3>Claude 5 最新情报泄露</h3>
+                    <p>代号"Fennec"的 Claude 5 Sonnet 正在开发中，预计2026年发布。性能基准测试数据及相比 Claude 4.5 Opus 的改进方向已曝光。</p>
+                    <div class="source">来源: API易</div>
+                    <a href="https://help.apiyi.com/claude-5-latest-news-2026-features-release.html" target="_blank" class="read-more">阅读原文</a>
+                </div>
+                
+                <div class="news-card">
                     <span class="tag google">Google</span>
-                    <h3>Gemini 2.0 Flash 正式版</h3>
-                    <p>2月5日发布正式版，包含 Flash、Flash-Lite 和 Pro 实验版本。知识截点至2024年8月，支持多模态理解。</p>
-                    <div class="meta">
-                        <span>2025-02-05</span>
-                        <span>✅ 已发布</span>
-                    </div>
+                    <h3>Gemini 3.1 Pro 深度实测</h3>
+                    <p>实测显示 Gemini 3.1 Pro 完全不如 3.0 Pro，模型温度下降、缺乏灵性、回复死板，疑似被 GPT-5.2"夺舍"。</p>
+                    <div class="source">来源: CSDN</div>
+                    <a href="https://blog.csdn.net/weixin_40774379/article/details/158344237" target="_blank" class="read-more">阅读原文</a>
                 </div>
                 
-                <div class="news-card meta">
-                    <span class="tag meta">Meta</span>
-                    <h3>Llama 4 预告：MoE架构</h3>
-                    <p>预计4月发布，采用专家混合(MoE)架构，原生支持多模态。包含 Scout、Maverick、Behemoth 三个版本，将是Meta最先进的开源模型。</p>
-                    <div class="meta">
-                        <span>2025-04 (预期)</span>
-                        <span>🔮 预告</span>
-                    </div>
-                </div>
             </div>
         </div>
         
+        <!-- 国内厂商 -->
         <div class="section">
             <h2 class="section-title">🇨🇳 国内厂商</h2>
             <div class="news-grid">
-                <div class="news-card alibaba">
+                
+                <div class="news-card">
                     <span class="tag alibaba">阿里巴巴</span>
-                    <h3>通义千问 Qwen 3.5 开源登顶</h3>
-                    <p>3970亿参数，170亿激活参数，以小胜大登顶全球最强开源模型。原生多模态，推理编程Agent能力全面提升。价格仅0.8元/百万Token，是Gemini 3的1/18。</p>
-                    <div class="meta">
-                        <span>2025-02-16/21</span>
-                        <span>🏆 登顶</span>
-                    </div>
+                    <h3>通义千问开源图像编辑模型新版本</h3>
+                    <p>阿里通义千问团队开源 Qwen-Image-Edit-2511 图像编辑模型，重点优化"图像漂移"问题，提升人物一致性。</p>
+                    <div class="source">来源: 澎湃新闻</div>
+                    <a href="https://m.thepaper.cn/newsDetail_forward_32400181" target="_blank" class="read-more">阅读原文</a>
                 </div>
                 
-                <div class="news-card deepseek">
-                    <span class="tag deepseek">DeepSeek</span>
-                    <h3>DeepSeek R1 引发全球关注</h3>
-                    <p>性能比肩OpenAI o1，超低训练成本，全面开源。MODEL1新架构代码曝光，V4版本预计2月发布。</p>
-                    <div class="meta">
-                        <span>2025-01/02</span>
-                        <span>🌟 现象级</span>
-                    </div>
+                <div class="news-card">
+                    <span class="tag deepseek">DeepSeek/字节/阿里</span>
+                    <h3>春节大决战：AI 应用争夺流量入口</h3>
+                    <p>2026年春节，字节跳动、阿里和 DeepSeek 通过发布新模型和整合现有产品争夺用户入口。春节用户时长增长30%带来流量红利。</p>
+                    <div class="source">来源: 虎嗅网</div>
+                    <a href="https://www.huxiu.com/article/4831915.html" target="_blank" class="read-more">阅读原文</a>
                 </div>
+                
+                <div class="news-card">
+                    <span class="tag alibaba">阿里巴巴</span>
+                    <h3>通义千问模型与应用更新</h3>
+                    <p>更新推理模型 Qwen3-235B-A22B-Thinking、生视频模型 Wan2.2，同时开启 Qwen 开源周活动。</p>
+                    <div class="source">来源: 知乎</div>
+                    <a href="https://zhuanlan.zhihu.com/p/1888535008785958517" target="_blank" class="read-more">阅读原文</a>
+                </div>
+                
             </div>
         </div>
         
-        <div class="timeline">
-            <h2>⚠️ OpenClaw 安全危机</h2>
-            <div class="timeline-item">
-                <div class="timeline-date">2026-02</div>
-                <div class="timeline-content">
-                    <strong>Meta研究员事件</strong>：OpenClaw AI agent误删整个收件箱，引发"speed run"失控担忧
-                </div>
-            </div>
-            <div class="timeline-item">
-                <div class="timeline-date">2026-02</div>
-                <div class="timeline-content">
-                    <strong>黑客大规模利用</strong>：多个黑客组织利用OpenClaw实例窃取API密钥、部署恶意软件
-                </div>
-            </div>
-            <div class="timeline-item">
-                <div class="timeline-date">2026-01</div>
-                <div class="timeline-content">
-                    <strong>安全审计</strong>：发现512个漏洞，其中8个高危。OpenClaw成为多向量企业威胁
-                </div>
-            </div>
-        </div>
-        
+        <!-- 安全预警 -->
         <div class="section">
-            <h2 class="section-title">💰 投融资</h2>
+            <h2 class="section-title">⚠️ OpenClaw 安全预警</h2>
             <div class="news-grid">
-                <div class="news-card funding">
-                    <span class="tag funding">具身智能</span>
-                    <h3>智平方：10亿元+ B轮融资</h3>
-                    <p>生产力型通用智能机器人公司，估值超100亿元。成为深圳首个百亿具身智能独角兽。</p>
-                    <div class="meta">
-                        <span>2026-02-23</span>
-                        <span>🦄 独角兽</span>
-                    </div>
+                
+                <div class="news-card">
+                    <span class="tag security">高危漏洞</span>
+                    <h3>CVE-2026-25253: OpenClaw 高危漏洞披露</h3>
+                    <p>2026年1月研究人员披露高危漏洞，CVSS 评分 8.8。该漏洞源于 OpenClaw 的安全缺陷，建议组织谨慎评估使用风险。</p>
+                    <div class="source">来源: Immersive Labs</div>
+                    <a href="https://www.immersivelabs.com/resources/c7-blog/openclaw-what-you-need-to-know-before-it-claws-its-way-into-your-organization" target="_blank" class="read-more">阅读原文</a>
                 </div>
                 
-                <div class="news-card funding">
-                    <span class="tag funding">具身智能</span>
-                    <h3>千寻智能：近20亿元融资</h3>
-                    <p>连续完成两轮融资，投资方包括云锋、红杉等超一线资本。估值达百亿级。</p>
-                    <div class="meta">
-                        <span>2026-02-24</span>
-                        <span>🦄 独角兽</span>
-                    </div>
+                <div class="news-card">
+                    <span class="tag security">安全评估</span>
+                    <h3>Kaspersky: OpenClaw 被发现不安全</h3>
+                    <p>卡巴斯基安全评估指出 OpenClaw 存在多处安全隐患，探索是否可以安全安装和配置，以及运行此实验所涉及的风险。</p>
+                    <div class="source">来源: Kaspersky</div>
+                    <a href="https://www.kaspersky.com/blog/openclaw-vulnerabilities-exposed/55263/" target="_blank" class="read-more">阅读原文</a>
                 </div>
+                
+                <div class="news-card">
+                    <span class="tag security">思科警告</span>
+                    <h3>个人 AI Agent 是安全噩梦</h3>
+                    <p>思科博客指出 OpenClaw 等个人 AI Agent 的真实安全风险：可运行 shell 命令、读写文件、在机器上执行脚本。</p>
+                    <div class="source">来源: Cisco</div>
+                    <a href="https://blogs.cisco.com/ai/personal-ai-agents-like-openclaw-are-a-security-nightmare" target="_blank" class="read-more">阅读原文</a>
+                </div>
+                
             </div>
-        </div>
-        
-        <div class="highlight-box" style="background: linear-gradient(135deg, #667eea, #764ba2);">
-            <h2>📊 今日速览</h2>
-            <ul class="highlight-list">
-                <li><strong>大模型</strong>：Claude 3.7混合推理、阿里Qwen 3.5开源登顶</li>
-                <li><strong>多模态</strong>：Gemini 2.0、Llama 4原生多模态支持</li>
-                <li><strong>Agent</strong>：OpenClaw安全危机引发行业对AI Agent责任的反思</li>
-                <li><strong>机器人</strong>：智平方、千寻智能百亿融资，具身智能赛道爆发</li>
-                <li><strong>价格战</strong>：AI Token价格持续下降，国产模型性价比优势凸显</li>
-            </ul>
         </div>
         
         <footer>
-            <p>AI Daily News · 每日9:00推送 · Generated by OpenClaw</p>
-            <p style="margin-top: 10px; font-size: 0.9em;">数据来源：EvoMap、Kimi Search、公开市场信息</p>
+            <p>AI Daily News · 每日9:00更新 · 数据来源: Kimi Search</p>
+            <p style="margin-top: 10px; font-size: 0.9em;">GitHub: github.com/AAAchaichai/ai-news-site</p>
         </footer>
     </div>
 </body>
